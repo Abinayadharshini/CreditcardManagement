@@ -39,7 +39,7 @@ public class CustomerController {
 //        return C;
 //    }
     @PostMapping
-    public ResponseEntity<Object> addEmployee(@RequestBody Customers customers)
+    public ResponseEntity<Object> addCustomerById(@RequestBody Customers customers)
     {
         System.out.println((customers));
         try {
@@ -55,15 +55,16 @@ public class CustomerController {
     @DeleteMapping("/{customer_id}")
     public ResponseEntity<Object> deleteCustomerById(@PathVariable Integer customer_id)
     {
-        System.out.println("delete Customer "+customer_id);
+        System.out.println("Deleting Customer with Id: "+customer_id);
         Map<StatusMessages, String> map = new HashMap<>();
         try {
-            map.put(StatusMessages.SUCCESS, "Employee deleted successfully");
             this.customerService.deleteCustomer(customer_id);
-            System.out.println("deleted");
+            map.put(StatusMessages.SUCCESS, "Employee deleted successfully");
+            System.out.println("Deleted");
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(map);
-        } catch (CustomerNotFoundException e) {
-            System.out.println("error "+e.getMessage());
+        }
+        catch (CustomerNotFoundException e) {
+            System.out.println("Error: "+e.getMessage());
             map.put(StatusMessages.FAILURE, e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(map);
         }

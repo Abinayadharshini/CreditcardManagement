@@ -3,14 +3,13 @@ package com.FullstackProject.CreditcardManagement.entities;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
 
 @Document("customers")
 public class Customers {
 
-   // @Id
-    private String id;
     private String first;
     private String last;
     private String gender;
@@ -20,15 +19,10 @@ public class Customers {
     private String job;
     private Date dob;
     @Id
-    private int customer_id;
+    private String id;
+    @Field("customer_id")
+    private int customerId;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getFirst() {
         return first;
@@ -70,34 +64,34 @@ public class Customers {
         this.dob = dob;
     }
 
-    public int getCustomer_id() {
-        return customer_id;
+
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
-    public Customers(String id, String first, String last, String gender, String job, Date dob, int customer_id) {
-        this.id = id;
+    public Customers(String first, String last, String gender, String job, Date dob) {
+
         this.first = first;
         this.last = last;
         this.gender = gender;
         this.job = job;
         this.dob = dob;
-        this.customer_id = customer_id;
+       // this.customerId = customerId;
     }
 
     @Override
     public String toString() {
         return "Customers{" +
-                "id='" + id + '\'' +
                 ", first='" + first + '\'' +
                 ", last='" + last + '\'' +
                 ", gender='" + gender + '\'' +
                 ", job='" + job + '\'' +
                 ", dob=" + dob +
-                ", customer_id=" + customer_id +
+                ", customer_id=" + customerId +
                 '}';
     }
 }
