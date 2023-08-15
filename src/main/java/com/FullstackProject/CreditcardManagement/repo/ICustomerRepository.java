@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ICustomerRepository extends MongoRepository<Customers, Integer> {
 
-
+   // Customers findByCustomerId(int customer_id);
 }

@@ -2,6 +2,7 @@ package com.FullstackProject.CreditcardManagement.controller;
 
 
 import com.FullstackProject.CreditcardManagement.entities.Customers;
+import com.FullstackProject.CreditcardManagement.entities.Transactions;
 import com.FullstackProject.CreditcardManagement.exceptions.CustomerExistsException;
 import com.FullstackProject.CreditcardManagement.exceptions.CustomerNotFoundException;
 import com.FullstackProject.CreditcardManagement.service.CustomerService;
@@ -26,11 +27,17 @@ public class CustomerController {
 
     // http://localhost:8080/customers/greet/get
 
-    @RequestMapping("/customers/greet/get")
-    public String greet(){
-        return "Hey";
-    }
+//    @RequestMapping("/customers/greet/get")
+//    public String greet(){
+//        return "Hey";
+//    }
 
+//    @GetMapping("/customer_id/{customer_id}")
+//    public Customers getCustomerByCustomerId(@PathVariable int customer_id){
+//        Customers C =this.customerService.getCustomerByCustomerId(customer_id);
+//        System.out.println(C);
+//        return C;
+//    }
     @PostMapping
     public ResponseEntity<Object> addEmployee(@RequestBody Customers customers)
     {

@@ -1,6 +1,7 @@
 package com.FullstackProject.CreditcardManagement.service;
 
 import com.FullstackProject.CreditcardManagement.entities.Customers;
+import com.FullstackProject.CreditcardManagement.entities.Transactions;
 import com.FullstackProject.CreditcardManagement.exceptions.CustomerExistsException;
 import com.FullstackProject.CreditcardManagement.exceptions.CustomerNotFoundException;
 import com.FullstackProject.CreditcardManagement.repo.ICustomerRepository;
@@ -10,11 +11,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service("")
+@Service
 public class CustomerService{
 
     @Autowired
     private ICustomerRepository CustomerRepo;
+
+//    public Customers getCustomerByCustomerId(int customer_id){
+//        return CustomerRepo.findByCustomerId(customer_id);
+//    }
 
     public Customers insertCustomer(Customers customers) throws CustomerExistsException {
         if(CustomerRepo.existsById(customers.getCustomer_id()))

@@ -13,6 +13,8 @@ import java.util.List;
 
 @RequestMapping("/transactions")
 
+// http://localhost:8080/transactions
+
 public class TransactionController {
     @Autowired
     private TransactionService transService;
@@ -58,10 +60,10 @@ public class TransactionController {
         System.out.println(T);
         return T;
     }
-    @GetMapping
-    public List<Transactions> getAllTransaction(){
-        return this.transService.AllTransaction();
-    }
+//    @GetMapping
+//    public List<Transactions> getAllTransaction(){
+//        return this.transService.AllTransaction();
+//    }
 
 
 }

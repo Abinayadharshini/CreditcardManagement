@@ -3,9 +3,10 @@ package com.FullstackProject.CreditcardManagement.service;
 import com.FullstackProject.CreditcardManagement.entities.Transactions;
 import com.FullstackProject.CreditcardManagement.repo.ITransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class TransactionService {
     @Autowired
     private ITransactionRepository transRepo;
