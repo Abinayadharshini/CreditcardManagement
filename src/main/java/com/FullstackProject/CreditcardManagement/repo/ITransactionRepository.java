@@ -1,6 +1,8 @@
 package com.FullstackProject.CreditcardManagement.repo;
 
 import com.FullstackProject.CreditcardManagement.entities.Transactions;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +17,8 @@ public interface ITransactionRepository extends MongoRepository<Transactions,Str
 
     List<Transactions> findByCategory(String category);
     List<Transactions> findByJob(String job);
-    List<Transactions> findByAmt(double amt);
+    //List<Transactions> findByAmt(double amt);
+    Page<Transactions> findTransactionsByCityPopulationLesserThan(long cityPopulation, Pageable pageable);
+    Page<Transactions> findAll(Pageable pageable);
+
 }

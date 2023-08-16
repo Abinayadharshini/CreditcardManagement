@@ -27,7 +27,12 @@ public class CustomerController {
 
     // http://localhost:8080/customers/greet/get
 
-//    @RequestMapping("/customers/greet/get")
+   // @RequestMapping("/customers/greet/get")
+//    public String greet(){
+//        return "Hey";
+//    }
+
+//    @GetMapping("customers/greet")
 //    public String greet(){
 //        return "Hey";
 //    }

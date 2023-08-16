@@ -1,6 +1,7 @@
 package com.FullstackProject.CreditcardManagement.entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
 
@@ -14,7 +15,8 @@ public class Transactions {
     private int  customer_id;
     private String city;
     private String state;
-    private long city_population;
+    @Field("city_population")
+    private long cityPopulation;
     private String merchant;
     private String category;
     private String first;
@@ -83,12 +85,12 @@ public class Transactions {
         this.state = state;
     }
 
-    public long getCity_population() {
-        return city_population;
+    public long getCityPopulation() {
+        return cityPopulation;
     }
 
-    public void setCity_population(long city_population) {
-        this.city_population = city_population;
+    public void setCityPopulation(long cityPopulation) {
+        this.cityPopulation = cityPopulation;
     }
 
     public String getMerchant() {
@@ -155,7 +157,7 @@ public class Transactions {
         this.customer_id = customer_id;
         this.city = city;
         this.state = state;
-        this.city_population = city_population;
+        this.cityPopulation = cityPopulation;
         this.merchant = merchant;
         this.category = category;
         this.first = first;
@@ -175,7 +177,7 @@ public class Transactions {
                 ", customer_id=" + customer_id +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
-                ", city_population=" + city_population +
+                ", city_population=" + cityPopulation +
                 ", merchant='" + merchant + '\'' +
                 ", category='" + category + '\'' +
                 ", first='" + first + '\'' +

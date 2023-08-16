@@ -3,6 +3,10 @@ package com.FullstackProject.CreditcardManagement.service;
 import com.FullstackProject.CreditcardManagement.entities.Transactions;
 import com.FullstackProject.CreditcardManagement.repo.ITransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,11 +32,27 @@ public class TransactionService {
     public List<Transactions> getTransactionByCategory(String category){
         return transRepo.findByCategory(category);
     }
-    public List<Transactions> getTransactionByJob(String job){
-        return transRepo.findByJob(job);
+//    public List<Transactions> getTransactionByJob(String job){
+//        return transRepo.findByJob(job);
+//    }
+//    public List<Transactions> getTransactionByAmt(double amt){
+//        return transRepo.findByAmt(amt);
+//    }
+
+    public List<Transactions>  getTransactionByOrderByAmtAsc(){
+        return transRepo.findAll(Sort.by(Sort.Direction.ASC, "amt"));
+        //List<Passenger> passengers = repository.findAll(Sort.by(Sort.Direction.ASC, "seatNumber"));
     }
-    public List<Transactions> getTransactionByAmt(double amt){
-        return transRepo.findByAmt(amt);
+
+    // Get a page of employees.
+    public List<Transactions> getTransactionByOrderByAmtAscByPagination(int pageno, int size) {
+        Pageable pageable = PageRequest.of(pageno, size);
+        Page<Transactions> page = transRepo.findAll( pageable);
+        int totalPages = page.getTotalPages();
+        long totalElements = page.getTotalElements();
+        int noofelements = page.getNumberOfElements();
+        int pagesize = page.getSize();
+        return page.getContent();
     }
     public Transactions addTransaction(Transactions transaction) {
         if(transRepo.existsById(transaction.getId())){
