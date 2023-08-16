@@ -15,6 +15,10 @@ import java.util.List;
 public class TransactionService {
     @Autowired
     private ITransactionRepository transRepo;
+
+
+    public Transactions T;
+
     public List<Transactions> AllTransaction(){
         return this.transRepo.findAll();
     }
@@ -37,22 +41,25 @@ public class TransactionService {
         return transRepo.findByJob(job);
     }
 
-    public List<Transactions>  getTransactionByOrderByAmtAsc(){
-        return transRepo.findAll(Sort.by(Sort.Direction.ASC, "amt"));
-        //List<Passenger> passengers = repository.findAll(Sort.by(Sort.Direction.ASC, "seatNumber"));
-    }
+
+//    public List<Transactions>  getTransactionByOrderByAmtAsc(){
+//        return transRepo.findAll(Sort.by(Sort.Direction.ASC, "amt"));
+//    }
 
 
     public TransactionPerPageResponse getTransactionsByPagination(int pageno, int size) {
-        //Pageable pageable = PageRequest.of(pageno, size, Sort.Direction.DESC, "amt");
-        Pageable pageable = PageRequest.of(pageno, size);
+        Pageable pageable = PageRequest.of(pageno, size, Sort.Direction.ASC, "amt");
+       // Pageable pageable = PageRequest.of(pageno, size);
         Page<Transactions> page = transRepo.findAll( pageable);
         int totalPages = page.getTotalPages();
         long totalElements = page.getTotalElements();
         int noofelements = page.getNumberOfElements();
         int pagesize = page.getSize();
+
         TransactionPerPageResponse response = new TransactionPerPageResponse();
-        response.setEmployees(page.getContent());
+
+        response.setTransactions(page.getContent());
+
         response.setNoofelements(noofelements);
         response.setPagesize(pagesize);
         response.setTotalElements(totalElements);
@@ -60,4 +67,20 @@ public class TransactionService {
         return response;
     }
 
+//    public TransactionPerPageResponse getTransactionsByJobsByPagination(int pageno, int size) {
+//        //Pageable pageable = PageRequest.of(pageno, size, Sort.Direction.ASC, "job");
+//        Pageable pageable = PageRequest.of(pageno, size);
+//        Page<Transactions> page = transRepo.findByJob( T.getJob(), pageable);
+//        int totalPages = page.getTotalPages();
+//        long totalElements = page.getTotalElements();
+//        int noofelements = page.getNumberOfElements();
+//        int pagesize = page.getSize();
+//        TransactionPerPageResponse response = new TransactionPerPageResponse();
+//        response.setTransactions(page.getContent());
+//        response.setNoofelements(noofelements);
+//        response.setPagesize(pagesize);
+//        response.setTotalElements(totalElements);
+//        response.setTotalPages(totalPages);
+//        return response;
+//    }
 }

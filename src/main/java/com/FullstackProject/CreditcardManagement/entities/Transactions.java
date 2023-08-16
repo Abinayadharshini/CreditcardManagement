@@ -149,7 +149,7 @@ public class Transactions {
         this.dob = dob;
     }
 
-    public Transactions(String id, String trans_date_trans_time, double amt, int trans_num, int customer_id, String city, String state, long city_population, String merchant, String category, String first, String last, Gender gender, String job, Date dob) {
+    public Transactions(String id, String trans_date_trans_time, double amt, int trans_num, int customer_id, String city, String state, long cityPopulation, String merchant, String category, String first, String last, Gender gender, String job, Date dob) {
         this.id = id;
         this.trans_date_trans_time = trans_date_trans_time;
         this.amt = amt;
@@ -165,6 +165,9 @@ public class Transactions {
         this.gender = gender;
         this.job = job;
         this.dob = dob;
+    }
+
+    public Transactions() {
     }
 
     @Override

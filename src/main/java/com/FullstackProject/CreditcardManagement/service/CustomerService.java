@@ -14,8 +14,6 @@ public class CustomerService{
     @Autowired
     private ICustomerRepository CustomerRepo;
 
-
-
     public Customers insertCustomer(Customers customers) throws CustomerExistsException {
         boolean c1= CustomerRepo.existsByFirst(customers.getFirst());
         boolean c2= CustomerRepo.existsByLast(customers.getLast());

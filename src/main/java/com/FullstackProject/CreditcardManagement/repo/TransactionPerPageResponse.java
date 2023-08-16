@@ -47,7 +47,8 @@ public class TransactionPerPageResponse {
         return transactions;
     }
 
-    public void setEmployees(List<Transactions> transactions) {
+    public void setTransactions(List<Transactions> transactions) {
         this.transactions = transactions;
     }
+
 }

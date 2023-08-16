@@ -64,7 +64,7 @@ public class CustomerController {
         Map<StatusMessages, String> map = new HashMap<>();
         try {
             this.customerService.deleteCustomer(customer_id);
-            map.put(StatusMessages.SUCCESS, "Employee deleted successfully");
+            map.put(StatusMessages.SUCCESS, "Customer deleted successfully");
             System.out.println("Deleted");
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(map);
         }

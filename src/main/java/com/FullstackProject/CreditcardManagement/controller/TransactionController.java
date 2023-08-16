@@ -66,25 +66,25 @@ public class TransactionController {
         return T;
     }
 
-//    @GetMapping("/amt/{amt}")
-//    public List<Transactions> getTransactionByAmt(@PathVariable double amt) {
-//        List<Transactions> T = this.transService.getTransactionByAmt(amt);
+
+//    @GetMapping("/getTransactionByOrderByAmtAsc")
+//    public List<Transactions> getTransactionByOrderByAmtAsc(){
+//        List<Transactions> T = this.transService.getTransactionByOrderByAmtAsc();
 //        System.out.println(T);
 //        return T;
 //    }
-    @GetMapping("/getTransactionByOrderByAmtAsc")
-    public List<Transactions> getTransactionByOrderByAmtAsc(){
-        List<Transactions> T = this.transService.getTransactionByOrderByAmtAsc();
-        System.out.println(T);
-        return T;
-    }
 
-    @GetMapping("/pages")
+    @GetMapping("/AmtOfSpending/pages")
     public TransactionPerPageResponse getTransactionsByPage(@RequestParam(required = false, defaultValue = "0") int pageno,
                                                          @RequestParam(required = false, defaultValue = "5") int size)
     {
         return this.transService.getTransactionsByPagination(pageno, size);
     }
 
-
+//    @GetMapping("/jobs/pages")
+//    public TransactionPerPageResponse getTransactionsByJobByPage(@RequestParam(required = false, defaultValue = "0") int pageno,
+//                                                            @RequestParam(required = false, defaultValue = "10") int size)
+//    {
+//        return this.transService.getTransactionsByJobsByPagination(pageno, size);
+//    }
 }
