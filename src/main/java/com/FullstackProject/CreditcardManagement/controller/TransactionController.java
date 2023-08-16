@@ -4,6 +4,7 @@ import com.FullstackProject.CreditcardManagement.entities.Customers;
 import com.FullstackProject.CreditcardManagement.entities.Transactions;
 import com.FullstackProject.CreditcardManagement.exceptions.CustomerExistsException;
 import com.FullstackProject.CreditcardManagement.exceptions.CustomerNotFoundException;
+import com.FullstackProject.CreditcardManagement.repo.TransactionPerPageResponse;
 import com.FullstackProject.CreditcardManagement.service.TransactionService;
 import com.FullstackProject.CreditcardManagement.utility.StatusMessages;
 import io.swagger.v3.oas.models.responses.ApiResponse;
@@ -58,12 +59,13 @@ public class TransactionController {
         System.out.println(T);
         return T;
     }
-//    @GetMapping("/job/{job}")
-//    public List<Transactions> getTransactionByJob(@PathVariable String job) {
-//        List<Transactions> T = this.transService.getTransactionByJob(job);
-//        System.out.println(T);
-//        return T;
-//    }
+    @GetMapping("/job/{job}")
+    public List<Transactions> getTransactionByJob(@PathVariable String job) {
+        List<Transactions> T = this.transService.getTransactionByJob(job);
+        System.out.println(T);
+        return T;
+    }
+
 //    @GetMapping("/amt/{amt}")
 //    public List<Transactions> getTransactionByAmt(@PathVariable double amt) {
 //        List<Transactions> T = this.transService.getTransactionByAmt(amt);
@@ -77,7 +79,12 @@ public class TransactionController {
         return T;
     }
 
-
+    @GetMapping("/pages")
+    public TransactionPerPageResponse getTransactionsByPage(@RequestParam(required = false, defaultValue = "0") int pageno,
+                                                         @RequestParam(required = false, defaultValue = "5") int size)
+    {
+        return this.transService.getTransactionsByPagination(pageno, size);
+    }
 
 
 }
