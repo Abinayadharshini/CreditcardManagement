@@ -22,6 +22,7 @@ public class Transactions {
     private String first;
     private String last;
     private Gender gender;
+    @Field("Job")
     private
     String job;
     private Date dob;
@@ -167,8 +168,8 @@ public class Transactions {
         this.dob = dob;
     }
 
-    public Transactions() {
-    }
+//    public Transactions() {
+//    }
 
     @Override
     public String toString() {

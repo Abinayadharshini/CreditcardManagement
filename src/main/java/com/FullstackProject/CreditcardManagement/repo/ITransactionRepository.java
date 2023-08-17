@@ -10,14 +10,34 @@ import java.util.List;
 
 
 public interface ITransactionRepository extends MongoRepository<Transactions,String> {
-    List<Transactions> findByCity(String city);
-    List<Transactions> findByMerchant(String merchant);
-    List<Transactions> findByState(String state);
-    List<Transactions> findByGender(String gender);
 
-    List<Transactions> findByCategory(String category);
+    //Job
     List<Transactions> findByJob(String job);
-    Page<Transactions> findAll(Pageable pageable);
+    Page<Transactions> findByJob(String job,Pageable pageable);
 
-    //Page<Transactions> findByJob(String job,Pageable pageable);
+
+    //Category
+    List<Transactions> findByCategory(String category);
+    Page<Transactions> findByCategory(String category,Pageable pageable);
+
+    //Merchant
+    List<Transactions> findByMerchant(String merchant);
+    Page<Transactions> findByMerchant(String merchant,Pageable pageable);
+
+
+    //City
+    List<Transactions> findByCity(String city);
+    Page<Transactions> findByCity(String city,Pageable pageable);
+
+
+    //state
+    List<Transactions> findByState(String state);
+    Page<Transactions> findByState(String state,Pageable pageable);
+
+    //Gender
+    List<Transactions> findByGender(String gender);
+    Page<Transactions> findByGender(String gender,Pageable pageable);
+
+    //Amt of spending
+    Page<Transactions> findAll(Pageable pageable);
 }
